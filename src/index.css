@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-obsidian text-bone font-body antialiased overflow-x-hidden;
+  }
+  ::selection {
+    @apply bg-gold-400 text-obsidian;
+  }
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold-400 rounded-full;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian-soft;
+  }
+}
+
+@layer components {
+  .gold-text {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+  .gold-outline-btn {
+    @apply inline-flex items-center gap-2 px-8 py-3 rounded-full border border-gold-400/70
+      text-gold-200 font-body text-sm tracking-[0.15em] uppercase
+      transition-all duration-300 hover:bg-gold-400 hover:text-obsidian hover:shadow-gold;
+  }
+  .section-title {
+    @apply font-display text-5xl md:text-6xl font-semibold text-center gold-text mb-2;
+  }
+  .section-eyebrow {
+    @apply font-mono text-xs tracking-[0.35em] uppercase text-gold-400/80 text-center block mb-3;
+  }
+}
+
+/* 3D cube stage — the piece we kept faithful to the original, rebuilt for React */
+.cube-perspective {
+  perspective: 1800px;
+  perspective-origin: 50%;
+}
+
+.cube-stage {
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% -50vw;
+}
+
+.cube-face {
+  backface-visibility: hidden;
+}
