@@ -1,82 +1,211 @@
-# Kashi Bangash — 3D Portfolio (React + Tailwind + Three.js)
+# 3D Design Portfolio
 
-A full  cube portfolio as a
-component-based React app: Tailwind for styling, Framer Motion for UI
-animation, and React Three Fiber for an ambient WebGL background (drifting
-gold particles + a floating wireframe ring). The signature "rotating cube"
-layout from the original is preserved and rebuilt with React state instead
-of manual DOM class toggling.
+An interactive 3D design portfolio featuring a rotating cube layout, elegant gold accents, smooth animations, and an immersive dark theme. The portfolio showcases Home, About, Resume, Portfolio, and Contact sections with an animated 3D background.
 
-## Theme
+##  Features
 
-Dark obsidian background (`#0b0d12` / `#12151d`) with a gold accent system
-(`#d4af37` primary, `#f2cf6b` glow) — display type in Cormorant Garamond,
-body type in Inter, data/labels in JetBrains Mono.
+- Interactive 3D rotating cube layout
+- Modern dark theme with gold accents
+- Animated background with gold particles and a wireframe ring
+- Smooth transitions and animations
+- Home, About, Resume, Portfolio, and Contact sections
+- Reusable React components
+- Organized project structure
+- Customizable profile information, resume, and portfolio projects
 
-## Getting started
+##  Technologies Used
+
+- React
+- JavaScript (JSX)
+- CSS
+- Three.js / React Three Fiber
+- Tailwind CSS
+- Framer Motion
+- Vite
+
+##  Design Theme
+
+- **Background:** Dark obsidian (`#0b0d12`, `#12151d`)
+- **Primary Accent:** Gold (`#d4af37`)
+- **Glow Effect:** Soft gold (`#f2cf6b`)
+- **Typography:** Cormorant Garamond, Inter, and JetBrains Mono
+
+## 📁 Project Structure
+
+```text
+3D_Design_portfolio/
+│
+├── public/
+│   └── images and other static assets
+│
+├── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   │
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── CubeStage.jsx
+│   │   │   └── Navbar.jsx
+│   │   │
+│   │   ├── sections/
+│   │   │   ├── Home.jsx
+│   │   │   ├── About.jsx
+│   │   │   ├── Resume.jsx
+│   │   │   ├── Portfolio.jsx
+│   │   │   └── Contact.jsx
+│   │   │
+│   │   ├── three/
+│   │   │   └── AmbientScene.jsx
+│   │   │
+│   │   └── ui/
+│   │       ├── SocialIcons.jsx
+│   │       └── TabSwitcher.jsx
+│   │
+│   └── data/
+│       ├── portfolio.js
+│       ├── profile.js
+│       └── resume.js
+│
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+```
+
+*Note: The root-level files shown above are typical examples. Keep the names consistent with the actual files in your repository.*
+
+##  Getting Started
+
+Follow these steps to run the project on your local computer.
+
+### 1. Clone the Repository
+
+Open your terminal or PowerShell and run:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+```
+
+Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with your actual GitHub username and repository name.
+
+### 2. Open the Project Folder
+
+```bash
+cd YOUR-REPOSITORY
+```
+
+Replace `YOUR-REPOSITORY` with the folder name created by Git when cloning.
+
+### 3. Install Dependencies
+
+Make sure Node.js and npm are installed, then run:
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # production build → dist/
-npm run preview   # preview the production build
 ```
 
-## Adding your images
+This installs the packages required by the project.
 
-Drop your photo and project screenshots into `public/` and point to them
-from `src/data/profile.js` (`avatar`) and `src/data/portfolio.js`
-(`works[].image`) — e.g. `public/picofme.png` → `./picofme.png`.
+### 4. Start the Development Server
 
-## Folder structure
-
-```
-portfolio-3d/
-├── index.html
-├── package.json
-├── tailwind.config.js        # dark/gold design tokens
-├── postcss.config.js
-├── vite.config.js
-├── public/                   # static assets (avatar, project images)
-└── src/
-    ├── main.jsx
-    ├── App.jsx                # top-level state: active section, intro timing
-    ├── index.css              # Tailwind layers + cube 3D CSS
-    ├── data/                  # all editable content, separate from UI
-    │   ├── profile.js
-    │   ├── resume.js
-    │   └── portfolio.js
-    └── components/
-        ├── layout/
-        │   ├── Navbar.jsx      # floating pill nav, active-tab indicator
-        │   └── CubeStage.jsx   # orchestrates the 4-face cube rotation
-        ├── three/
-        │   └── AmbientScene.jsx # R3F canvas: gold particles + floating ring
-        ├── sections/
-        │   ├── Home.jsx
-        │   ├── About.jsx
-        │   ├── Resume.jsx      # internal tabs: Experience / Skills / Education
-        │   ├── Portfolio.jsx   # internal tabs: Works / Services
-        │   └── Contact.jsx     # controlled form, front-face overlay
-        └── ui/
-            ├── TabSwitcher.jsx
-            └── SocialIcons.jsx
+```bash
+npm run dev
 ```
 
-## How the cube works
+Open the local URL shown in the terminal, usually:
 
-`CubeStage` positions four sections (`Home`, `About`, `Resume`, `Portfolio`)
-as faces of a CSS 3D cube using the same `translate/rotateY` math as the
-original stylesheet, then animates the stage's `rotateY` with Framer Motion
-whenever the active nav index changes. `Contact` shares the cube's front
-face (no transform) and is faded in/out via opacity + visibility, matching
-the original's overlay behaviour when its nav item is selected.
+```text
+http://localhost:5173
+```
 
-## Extending
+### 5. Build for Production
 
-- Swap `AmbientScene`'s particle count / geometry for something heavier if
-  you want a more dramatic background (mind mobile GPU budgets).
-- Each section reads from `src/data/*` — update content there, not inside
-  the components.
-- `tailwind.config.js` is the single source of truth for the gold/obsidian
-  palette; change tokens there to re-theme everything at once.
+To create a production-ready build, run:
+
+```bash
+npm run build
+```
+
+### 6. Preview the Production Build
+
+```bash
+npm run preview
+```
+
+##  Customization
+
+### Update Profile Information
+
+Edit:
+
+```text
+src/data/profile.js
+```
+
+Use this file for profile-related content, according to the data structure defined in the project.
+
+### Update Portfolio Projects
+
+Edit:
+
+```text
+src/data/portfolio.js
+```
+
+Add or modify project details and image paths according to the existing data format.
+
+### Update Resume Information
+
+Edit:
+
+```text
+src/data/resume.js
+```
+
+Update the resume details to match your experience, education, and skills.
+
+### Add Images
+
+Place your profile image and project screenshots inside the `public/` folder. Update the image paths in the relevant data files.
+
+### Customize Styling
+
+Edit:
+
+```text
+src/index.css
+```
+
+to customize global styles, colors, typography, spacing, and other visual properties.
+
+##  Main Components
+
+| Component | Purpose |
+|---|---|
+| `App.jsx` | Main application component |
+| `main.jsx` | Application entry point |
+| `CubeStage.jsx` | 3D cube layout |
+| `Navbar.jsx` | Navigation interface |
+| `AmbientScene.jsx` | Animated 3D background |
+| `Home.jsx` | Home section |
+| `About.jsx` | About section |
+| `Resume.jsx` | Resume section |
+| `Portfolio.jsx` | Portfolio projects |
+| `Contact.jsx` | Contact section |
+| `SocialIcons.jsx` | Social media icons |
+| `TabSwitcher.jsx` | Tab-switching interface |
+
+##  Notes
+
+- Run commands from the project root directory, where `package.json` is located.
+- Make sure Node.js and npm are installed before running the project.
+- Check `package.json` for the exact scripts and dependencies configured in your project.
+- Keep profile information, resume details, and project content updated in the `src/data/` directory.
+
+##  Author
+
+**Kashi Bangash**
+
+3D Design Portfolio
